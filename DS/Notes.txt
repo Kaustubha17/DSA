@@ -1,0 +1,6 @@
+1.Classes are blueprints that when created make objects know as instances
+2.Classes are created with the new keyword
+3.The constructor function is a special function that gets run when the class is instantiated
+4.Instance methods can be added to classes similar to methods in objects
+5.Class methods can be added using the static keyword
+6.this keyword refers to the instantiated object of the class
