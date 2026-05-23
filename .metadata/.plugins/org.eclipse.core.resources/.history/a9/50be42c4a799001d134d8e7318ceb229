@@ -1,0 +1,83 @@
+package Weekly_Contest_318;
+
+import java.util.ArrayList;
+
+
+public class StringOperations {
+	public static int helper(ArrayList<String>string,int i) {
+		if(i>=string.size()) {
+			return 0;
+		}
+		
+		return 0;
+	}
+	
+	
+	public static int solve(int N, String s){
+		int count=0;
+		ArrayList<String>vowels=new ArrayList<>();
+		vowels.add("a");
+		vowels.add("e");
+		vowels.add("i");
+		vowels.add("o");
+		vowels.add("u");
+		ArrayList<String>string=new ArrayList<>();
+		for(int i=0;i<s.length();i++) {
+			string.add(s.substring(i,i+1));
+		}
+		
+		for(int i=1;i<N-1;i++) {
+			String a=string.get(i-1);
+			String b=string.get(i);
+			String c=string.get(i+1);
+			
+			if(vowels.contains(a)&&vowels.contains(b)&&vowels.contains(c)) {
+					count+=1;
+					
+					string.set(i, "c");
+				
+				}
+			else if(vowels.contains(a)&&vowels.contains(b)&&!vowels.contains(c)) {
+				count+=1;
+			string.set(i-1, "c");
+		}
+			else if(vowels.contains(a)&&!vowels.contains(b)&&vowels.contains(c)) {
+				count+=0;
+			
+		}
+			else if(vowels.contains(a)&&!vowels.contains(b)&&!vowels.contains(c)) {
+				count+=1;
+				string.set(i+1, "a");
+		}
+			else if(!vowels.contains(a)&&vowels.contains(b)&&vowels.contains(c)) {
+				count+=1;
+				string.set(i+1, "c");
+		}
+			else if(!vowels.contains(a)&&vowels.contains(b)&&!vowels.contains(c)) {
+				count+=0;
+			
+		}
+			else if(!vowels.contains(a)&&!vowels.contains(b)&&vowels.contains(c)) {
+				count+=1;
+				string.set(i-1, "a");
+		}
+			
+				else if(!vowels.contains(a)&&!vowels.contains(b)&&!vowels.contains(c)) {
+					count+=1;
+				string.set(i, "a");
+			}
+		}
+		for(String q:string){
+			System.out.print(q);
+			
+		}
+		System.out.println();
+		
+		return count;
+    }
+	public static void main(String[] args) {
+		System.out.println(solve(3,"owf"));
+
+	}
+
+}

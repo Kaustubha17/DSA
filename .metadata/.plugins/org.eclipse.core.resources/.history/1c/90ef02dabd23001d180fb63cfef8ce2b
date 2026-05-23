@@ -1,0 +1,217 @@
+package Trees;
+
+import java.util.Scanner;
+
+public class BinaryTreeUse {
+
+	public static BinaryTreeNode<Integer> takeInputBetter(boolean isRoot,int parentData,boolean isLeft){
+		if(isRoot) {
+			System.out.println("Enter root data");
+
+		}
+		else {
+			if(isLeft)
+				System.out.println("Enter left child of "+parentData);
+			else
+				System.out.println("Enter right child of "+parentData);		
+		}
+
+		Scanner s=new Scanner(System.in);
+		int rootData=s.nextInt();
+		if(rootData==-1) {
+			return null;
+		}
+		BinaryTreeNode<Integer> root=new BinaryTreeNode<>(rootData);
+		BinaryTreeNode<Integer> leftChild=takeInputBetter(false,root.data,true);
+		BinaryTreeNode<Integer> rightChild=takeInputBetter(false,root.data,false);
+		root.left=leftChild;
+		root.right=rightChild;
+		return root;
+
+	}
+
+	public static BinaryTreeNode<Integer> takeInput(){
+		System.out.println("Enter root data");
+		Scanner s=new Scanner(System.in);
+		int rootData=s.nextInt();
+		if(rootData==-1) {
+			return null;
+		}
+		BinaryTreeNode<Integer> root=new BinaryTreeNode<>(rootData);
+		BinaryTreeNode<Integer> leftChild=takeInput();
+		BinaryTreeNode<Integer> rightChild=takeInput();
+		root.left=leftChild;
+		root.right=rightChild;
+		return root;
+
+	}
+
+
+
+
+	public static void printTreeDetailed(BinaryTreeNode<Integer>root) {
+		if(root==null)
+			return;
+		if(root.left!=null &&root.right!=null)
+			System.out.println(root.data+":"+" L:"+root.left.data+" R:"+root.right.data);
+		else if(root.left!=null &&root.right==null)
+			System.out.println(root.data+":"+" L:"+root.left.data);
+		else if(root.left==null &&root.right!=null)
+			System.out.println(root.data+":"+" R:"+root.right.data);
+		else
+			System.out.println(root.data+":");
+
+		printTreeDetailed(root.left);
+		printTreeDetailed(root.right);
+
+
+	}
+
+	public static void printTree(BinaryTreeNode<Integer>root) {
+
+		System.out.println(root.data);
+
+		printTree(root.left);
+		printTree(root.right);
+
+
+	}
+
+
+
+	public static int numberOfNodes(BinaryTreeNode<Integer> root) {
+		if(root==null)
+			return 0;
+
+
+
+		int leftnodes=numberOfNodes(root.left);
+		int rightnodes=numberOfNodes(root.right);
+
+		return leftnodes+rightnodes+1;
+
+	}
+
+	public static int largest(BinaryTreeNode<Integer> root) {
+		if(root==null)
+			return -1;
+
+		int leftLargest=largest(root.left);
+		int rightLargest=largest(root.right);
+		return	Math.max(root.data,Math.max(leftLargest, rightLargest));
+	}
+
+
+	public static int heightOfTree(BinaryTreeNode<Integer>root) {
+		if(root==null)
+			return 0;
+
+
+		int leftMax=heightOfTree(root.left);
+		int rightMax=heightOfTree(root.right);
+
+		return(1+Math.max(leftMax, rightMax));
+
+	}
+
+
+	public static int numberOfLeaves(BinaryTreeNode<Integer>root) {
+
+		if(root==null)
+			return 0;
+		if(root.left==null && root.right==null)
+			return 1;
+
+		return numberOfLeaves(root.left)+numberOfLeaves(root.right);
+	}
+
+
+	public static void printAtDepthK(BinaryTreeNode<Integer>root,int k) {
+		if(root==null)
+			return;
+
+		if(k==0)
+		{
+			System.out.print(root.data+" ");
+			return;
+		}
+		printAtDepthK(root.left, k-1);
+		printAtDepthK(root.right, k-1);
+	}
+
+
+	public static void printNodesWithoutSibling(BinaryTreeNode<Integer> root,boolean isRoot) {
+
+		if(root==null)
+			return;
+		if(!isRoot){
+			if(root.left!=null && root.right==null)
+				System.out.print(root.left.data+" ");
+		}
+		else if(root.left==null && root.right!=null) {
+			System.out.print(root.right.data+" ");
+		}
+
+		printNodesWithoutSibling(root.left,false);
+		printNodesWithoutSibling(root.right,false);
+
+	}
+
+	public static BinaryTreeNode<Integer> removeLeafNodes(BinaryTreeNode<Integer> root) {
+		if(root==null)
+			return null;
+
+		if(root.right==null && root.left==null)
+			return null;
+
+		root.left= removeLeafNodes(root.left);
+		root.right=removeLeafNodes(root.right);
+		return root;
+
+	}
+
+
+
+		public static void mirrorBinaryTree(BinaryTreeNode<Integer> root){
+
+		if(root==null)
+			return;
+
+		BinaryTreeNode<Integer> toBeRight=root.left;
+		BinaryTreeNode<Integer> toBeLeft=root.right;
+
+		root.left=toBeRight;
+		root.right=toBeLeft;
+
+		mirrorBinaryTree(root.left);
+		mirrorBinaryTree(root.right);
+	}
+
+	public static void main(String[] args) {
+		BinaryTreeNode<Integer> root=new BinaryTreeNode<>(1);
+		BinaryTreeNode<Integer> rootLeft=new BinaryTreeNode<>(2);
+		BinaryTreeNode<Integer> rootRight=new BinaryTreeNode<>(3);
+		root.left=rootLeft;
+		root.right=rootRight;
+
+		BinaryTreeNode<Integer> twoRight=new BinaryTreeNode<>(4);
+		BinaryTreeNode<Integer> threeLeft=new BinaryTreeNode<>(5);
+
+		rootLeft.right=twoRight;
+		rootRight.left=threeLeft;
+		//		BinaryTreeNode<Integer> root=takeInputBetter(true,0,false);
+		//		System.out.println(numberOfNodes(root));
+		//				System.out.println(heightOfTree(root));
+		//				System.out.println(numberOfLeaves(root));
+		//				printAtDepthK(root, 2);
+		printTreeDetailed(root);
+		//		root=removeLeafNodes(root);
+		mirrorBinaryTree(root);
+
+		System.out.println();
+		printTreeDetailed(root);
+
+
+	}
+
+}

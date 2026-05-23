@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;Merge_Intervals.java&apos; to &apos;Leetcode/src/FrazSheet&apos;&#x0D;&#x0A;- Original project: &apos;Array_1&apos;&#x0D;&#x0A;- Destination element: &apos;Leetcode/src/FrazSheet&apos;&#x0D;&#x0A;- Original element: &apos;Merge_Intervals.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="=Leetcode/src&lt;FrazSheet" element1="/src&lt;{Merge_Intervals.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1666662825281" units="1" version="1.0"/>
+</session>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;fundamentals.TakingInmput&apos; to &apos;TakingInput&apos;&#x0D;&#x0A;- Original project: &apos;fundamentals&apos;&#x0D;&#x0A;- Original element: &apos;fundamentals.TakingInmput&apos;&#x0D;&#x0A;- Renamed element: &apos;fundamentals.TakingInput&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;TakingInmput&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;fundamentals{TakingInmput.java[TakingInmput" matchStrategy="1" name="TakingInput" qualified="false" references="true" similarDeclarations="false" stamp="1657543332235" textual="false" version="1.0"/>
+</session>

@@ -1,0 +1,4 @@
+1673631633525	Extract method 'makeVisitedFalse'
+1673672979024	Rename local variable 'newRow'
+1673673087527	Extract method 'addInAnswer'
+1673673445545	Extract method 'printAnswer'
